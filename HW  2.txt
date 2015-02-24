@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <io.hpp>
+#include <string.h>
+
+int main (void)
+{
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    int highest = x;
+
+    printf("Please enter the first number to be tested");
+    scanf( "%i", &x);
+
+    printf("Please enter the second number to be tested");
+    scanf("%i", &y);
+
+    printf("PLease enter the third number to be tested");
+    scanf("%i", &z);
+
+    if (y> highest )
+    {
+       highest= y;
+    {
+        y = j;
+    }
+
+    if (z >highest )
+    {
+        highest = z;
+    }
+
+    
+    printf("The highest number entered is %i", highest);
+
+}
+
+#include <stdio.h>
+#include "io.hpp"
+#include <string.h>
+
+int main (void)
+
+{
+	int x =0;
+	int y =0;
+	
+	printf("Please enter the first number");
+	scanf("%i", &x);
+	
+	printf("Please enter the second number");
+	scanf("%i", &y);
+	
+	if(x==y);
+	
+{
+	printf("Both numbers are equal");
+	
+}
+
+	if(x>y);
+
+{
+	printf("First number is greater than second number");
+}
+
+	if(y>x)
+{
+	printf("Second number is greater than first number");
+}
+
+}
