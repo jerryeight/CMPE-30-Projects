@@ -1,0 +1,176 @@
+/*
+ *     SocialLedge.com - Copyright (C) 2013
+ *
+ *     This file is part of free software framework for embedded processors.
+ *     You can use it and/or distribute it as long as this copyright header
+ *     remains unmodified.  The code is free for personal use and requires
+ *     permission to use in a commercial product.
+ *
+ *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+ *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ *     You can reach the author of this software at :
+ *          p r e e t . w i k i @ g m a i l . c o m
+ */
+
+/**
+ * @file
+ * @brief This is the application entry point.
+ */
+
+#include <stdio.h>
+#include "io.hpp"
+#include <string.h>
+
+int main(void)
+{
+    char name[25];
+    char user[25];
+    int scores[] =
+    { 0, 0, 0 };
+
+    bool withname = false;
+
+    float max_score = 0;
+    float user_score = 0;
+    float percentage = 0;
+    //percentage is average
+    float remainder = 0;
+
+    int summary = 0;
+    int quit = 0;
+    int submitscore = 0;
+    int submituser = 0;
+    float sum = 0;
+    int diff = (10 - remainder);
+    int choice = 0;
+
+    char grade_letter = 'F';
+
+    do
+    {
+
+        printf("1. Enter user name.\n");
+        printf("2. Enter exam scores\n");
+        printf("3. Display average\n");
+        printf("4. Display summary.\n");
+        printf("5. Quit.\n");
+
+        scanf("%i", &choice);
+        getchar();
+
+        //printf("Based on the results of %0.0f%c%0.0f%c your percentage is %0.2f%% ", user_score, divide, max_score, comma, percentage);
+
+        {
+            if (choice == 1)
+            {
+                printf("Please enter your user name\n");
+                scanf("%s", &user[0]);
+                getchar();
+                continue;
+            }
+
+            if (choice == 2)
+
+            {
+                for (int i = 0; i < 3; i++)
+
+                {
+
+                    //int h= i++ ;
+                    //int k=0; k < 3; k++;
+
+                    printf("Please enter your exam score # %i \n", (i + 1));
+                    //printf("%i+1", i);
+                    scanf("%i", &scores[i]);
+                    getchar();
+
+                }
+
+                for (int i = 0; i < 3; i++)
+
+                {
+                    sum += scores[i];
+                }
+
+                percentage = (sum / 3);
+                if (percentage >= 90.00)
+
+                {
+                    grade_letter = 'A';
+                }
+
+                else if (percentage >= 80.00)
+                {
+                    grade_letter = 'B';
+                }
+
+                else if (percentage >= 70.00)
+                {
+                    grade_letter = 'C';
+                }
+
+                else if (percentage >= 60.00)
+                {
+                    grade_letter = 'D';
+                }
+
+                submitscore = 1;
+
+                printf("You entered the scores:\n");
+
+                for (int j = 0; j < 3; j++)
+                {
+
+                    printf(" %i\n", scores[j]);
+                }
+
+            }
+
+            if (choice == 3)
+            {
+                if (submitscore == 1)
+                {
+                    printf(
+                            "Hi based on your exam scores of %i, %i, and %i your average is %0.2f%%\n",
+                            scores[0], scores[1], scores[2], percentage);
+                }
+                else
+                {
+                    printf("Please use the menu to enter your exam scores");
+                }
+                continue;
+            }
+            if (choice == 4)
+            {
+                if (submituser != 1 && submitscore != 1)
+                {
+                    printf(
+                            "Please use menu to submit your user name and exam scores\n");
+
+                }
+                else
+                {
+                    printf(
+                            "Hello %s based on your exam scores of %i, %i, and %i your average is %0.2f%% with letter grade of an '%c'\n \n",
+                            user, scores[0], scores[1], scores[2], percentage,
+                            grade_letter);
+                }
+                continue;
+            }
+
+            if (choice == 5)
+            {
+
+                printf("The program will now close \n");
+                quit = 1;
+
+            }
+
+        }
+    } while (quit != 1);
+
+}

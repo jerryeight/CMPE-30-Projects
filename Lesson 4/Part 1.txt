@@ -1,0 +1,132 @@
+/*
+ *     SocialLedge.com - Copyright (C) 2013
+ *
+ *     This file is part of free software framework for embedded processors.
+ *     You can use it and/or distribute it as long as this copyright header
+ *     remains unmodified.  The code is free for personal use and requires
+ *     permission to use in a commercial product.
+ *
+ *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+ *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ *     You can reach the author of this software at :
+ *          p r e e t . w i k i @ g m a i l . c o m
+ */
+
+/**
+ * @file
+ * @brief This is the application entry point.
+ */
+
+#include <stdio.h>
+#include "io.hpp"
+
+int main()
+{
+    float max_score = 0;
+    float user_score = 0;
+    float percentage = 0;
+    float remainder = 0;
+
+    int diff = (10 - remainder);
+
+    char grade_letter = 'F';
+
+    printf("What is the max score of your exam:");
+    scanf("%f", &max_score);
+
+    printf("What was your score:");
+    scanf("%f", &user_score);
+
+    // counter for invalid
+
+       // int value()
+               if (user_score > max_score || user_score < 0)
+               {
+                   int counter = 1;
+
+                           while (counter == 1)
+                                   {
+                               printf("Please enter a valid value");
+                               scanf("%f", &user_score);
+
+                               if (user_score <= max_score && user_score >= 0)
+
+                               {
+                                   counter = counter - 1;
+                               }
+                                   }
+
+                              // else
+                               {
+                                 //int invalid ();
+                               }
+                                   }
+
+
+
+
+
+        //printf("Please enter a valid value");
+        //scanf("%f", &user_score);
+
+
+
+    //char divide = '/';
+    //char comma = ',';
+
+    //max_score = 50;
+    //user_score = 45;
+
+    percentage = (user_score / max_score) * 100;
+
+    //printf("Based on the results of %0.0f%c%0.0f%c your percentage is %0.2f%% ", user_score, divide, max_score, comma, percentage);
+
+    if (percentage >= 90.00)
+
+    {
+        grade_letter = 'A';
+    }
+
+    else if (percentage >= 80.00)
+    {
+        grade_letter = 'B';
+    }
+
+    else if (percentage >= 70.00)
+    {
+        grade_letter = 'C';
+    }
+
+    else if (percentage >= 60.00)
+    {
+        grade_letter = 'D';
+    }
+
+    //if (grade_letter = 'B' || 'c' || 'D' || 'F' )
+    //{
+        diff = (int)percentage % 10;
+        diff = 10 - diff;
+        printf("You scored a %c , and you were %i percent away from next letter grade", grade_letter, diff);
+    //}
+
+        printf("Press Q to quit the program \n");
+
+        char Q =0;
+        getchar();
+        getchar();
+
+        scanf("%c", &Q);
+
+        return 0;
+
+}
+
+
+
+ //%f your percentage is: %f"
+
+//, max_score, percentage

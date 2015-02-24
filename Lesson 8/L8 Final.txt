@@ -1,0 +1,314 @@
+/*
+ *     SocialLedge.com - Copyright (C) 2013
+ *
+ *     This file is part of free software framework for embedded processors.
+ *     You can use it and/or distribute it as long as this copyright header
+ *     remains unmodified.  The code is free for personal use and requires
+ *     permission to use in a commercial product.
+ *
+ *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+ *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ *     You can reach the author of this software at :
+ *          p r e e t . w i k i @ g m a i l . c o m
+ */
+
+/**
+ * @file
+ * @brief This is the application entry point.
+ */
+
+#include <stdio.h>
+#include "io.hpp"
+#include <string.h>
+
+float calculate_percent(float score, float amount);
+float getAvg(float *avg, int size); // average
+
+char getGradeLetter(float t); // grade letter
+
+void print_line(char, int); // line
+
+float getExamScoreFromUser(float position);
+
+void checknumber(bool number);
+
+int main(void)
+{
+
+    bool name_entered = false;
+    bool score_entered = false;
+
+    char user[25]; //name
+    float scores[100]; // 100 scores
+    char gl[5] =
+    { 'A', 'B', 'C', 'D', 'F' };
+    float avg = 0; //getAvg(float score_1, score_2, score_3);
+
+    char grade = 'G'; //test letter
+    char var = 'E'; // line variable
+    int amount = 0; // number of exams
+    int num = 0; // line
+
+    int quit = 0; //quit
+
+    int choice = 0; // choice
+
+    printf("\n\nPlease enter character to use as line.\n\n");
+    scanf("%c", &var);
+    getchar();
+
+    printf("\n\nPlease enter number of times to print character\n\n");
+    scanf("%i", &num);
+    getchar();
+
+    print_line(var, num);
+
+    do
+    {
+
+        printf("\n\n1. Enter user name\n");
+        printf("2. Enter exam scores\n");
+        printf("3. Display average\n");
+        printf("4. Display summary.\n");
+        printf("5. Quit.\n\n");
+
+        scanf("%i", &choice);
+        getchar();
+
+        {
+            if (choice == 1)
+            {
+                printf("\n\nPlease enter your user name\n\n");
+                scanf("%s", &user[0]);
+                getchar();
+                continue;
+            }
+
+            if (choice == 2)
+
+            {
+                {
+
+                    printf("\n\nPlease enter the number of exams.\n\n");
+                    scanf("%i", &amount);
+                    getchar();
+
+                    while (amount > 100)
+                    {
+
+                        bool greater = true;
+
+                        if (greater == true)
+                        {
+                            printf("\n\nPlease re-enter the number of exams.\n\n");
+                            scanf("%i", &amount);
+                            getchar();
+
+                        }
+
+                    }
+
+                    // entering score
+
+                    for (int i = 0; i < amount; i++)
+
+                    {
+                        scores[i] = getExamScoreFromUser(i);
+
+                    }
+                }
+
+                score_entered = true;
+
+                printf("\n\nYou entered the scores:\n\n");
+
+                for (int j = 0; j < amount; j++)
+                {
+
+                    printf("%0.2f\n", scores[j]);
+                }
+
+                continue;
+            }
+
+            if (choice == 3)
+            {
+                if (score_entered == true)
+
+                {
+                    //display only average
+
+                    avg = getAvg(scores, amount);
+
+                    printf(
+                            "\n\nHi %s based on your exam scores your average is %0.2f%%\n\n",
+                            user, avg);
+
+                }
+                else
+                {
+                    printf("\n\nPlease use the menu to enter your exam scores\n\n");
+                }
+                continue;
+            }
+            if (choice == 4)
+            {
+                if (name_entered != true && score_entered != true)
+                {
+
+                    printf(
+                            "\n\nPlease use menu to submit your user name and exam scores\n\n");
+                }
+                else
+                {
+
+                    {
+                        float test = getAvg(scores, amount);
+
+                        char grade = getGradeLetter(test);
+
+                        printf("\n\n Hi %s based on your exam scores of ", user);
+
+                        for (int j = 0; j < amount; j++)
+                        {
+
+                            printf("%0.2f, ", scores[j]);
+                        }
+
+                        printf(
+                                "your average is %0.2f%% with letter grade of an %c. \n ",
+                                avg, grade);
+                    }
+                }
+                continue;
+            }
+
+            if (choice == 5)
+            {
+
+                printf("\n\nThe program will now close \n\n\n");
+
+                printf("\n....PROGRAM TERMINATED........................\n\n");
+
+                quit = 1;
+                break;
+            }
+
+        }
+    } while (quit != 1);
+
+}
+
+void checknumber(bool number)
+
+{
+    int value;
+
+    if (number == true)
+    {
+        printf("Please re-enter the number of exams.\n");
+        scanf("%i", &value);
+        getchar();
+    }
+
+}
+
+float calculate_percent(float score, float amount)
+
+{
+
+    float percent = 0;
+
+    percent = score / amount;
+
+    return percent;
+
+}
+
+float getAvg(float *avg, int size)
+
+{
+
+    float total = 0;
+
+    for (int i = 0; i < size; i++)
+
+    {
+        total = (total) + avg[i];
+    }
+
+    // printf("Total score is %f", total);
+
+    int average = 0;
+
+    average = ((total) / (size));
+
+    return average;
+
+}
+
+float getExamScoreFromUser(float position)
+
+{
+    float s;
+
+    {
+        printf("Please enter exam score %0.0f. ", position + 1);
+        scanf("%f", &s);
+
+        return s;
+
+    }
+
+}
+
+char getGradeLetter(float t)
+
+{
+    char grade_letter;
+
+    if (t >= 90.00)
+
+    {
+        grade_letter = 'A';
+    }
+
+    else if (t >= 80.00)
+    {
+        grade_letter = 'B';
+    }
+
+    else if (t >= 70.00)
+    {
+        grade_letter = 'C';
+    }
+
+    else if (t >= 60.00)
+    {
+        grade_letter = 'D';
+    }
+
+    else if (t <= 60)
+
+    {
+        grade_letter = 'F';
+    }
+    return grade_letter;
+}
+
+void print_line(char var, int num)
+
+{
+    int i = 0;
+
+    for (i = 0; i < num; i++)
+    {
+        printf("%c", var);
+    }
+
+}
+

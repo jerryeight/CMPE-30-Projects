@@ -1,0 +1,199 @@
+/*
+ *     SocialLedge.com - Copyright (C) 2013
+ *
+ *     This file is part of free software framework for embedded processors.
+ *     You can use it and/or distribute it as long as this copyright header
+ *     remains unmodified.  The code is free for personal use and requires
+ *     permission to use in a commercial product.
+ *
+ *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+ *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ *     You can reach the author of this software at :
+ *          p r e e t . w i k i @ g m a i l . c o m
+ */
+
+/**
+ * @file
+ * @brief This is the application entry point.
+ */
+
+#include <stdio.h>
+#include "io.hpp"
+#include <string.h>
+
+typedef struct
+{
+
+        char fname[5];
+        char lname[5];
+        int s_id[5];
+
+} student;
+
+student getStudentInfo(void);
+
+student printStudentInfo(student *st_ptr);
+
+float calculate_percent(float score, float amount);
+float getAvg(float *avg, int size); // average
+
+char getGradeLetter(float t); // grade letter
+
+void print_line(char, int); // line
+
+float getExamScoreFromUser(float position);
+
+void checknumber(bool number);
+
+int main(void)
+{
+
+    
+    student students[5];
+
+    for (int i = 0; i < 5; i++)
+
+    {
+
+        getStudentInfo(*students[i]);
+
+        
+        
+    }
+
+    
+    
+}
+
+student printStudentInfo(student *st_ptr)
+
+{
+
+}
+
+void getStudentInfo(student *student)
+
+{
+
+    printf("Enter your first name");
+    scanf("%s", &student->fname[0]);
+    printf("Enter your last name");
+    scanf("%s", &student->lname[0]);
+    printf("Enter your student id");
+    scanf("%i", &student->s_id[0]);
+
+}
+
+void checknumber(bool number)
+
+{
+    int value;
+
+    if (number == true)
+    {
+        printf("Please re-enter the number of exams.\n");
+        scanf("%i", &value);
+        getchar();
+    }
+
+}
+
+float calculate_percent(float score, float amount)
+
+{
+
+    float percent = 0;
+
+    percent = score / amount;
+
+    return percent;
+
+}
+
+float getAvg(float *avg, int size)
+
+{
+
+    float total = 0;
+
+    for (int i = 0; i < size; i++)
+
+    {
+        total = (total) + avg[i];
+    }
+
+    // printf("Total score is %f", total);
+
+    int average = 0;
+
+    average = ((total) / (size));
+
+    return average;
+
+}
+
+float getExamScoreFromUser(float position)
+
+{
+    float s;
+
+    {
+        printf("Please enter exam score %0.0f. ", position + 1);
+        scanf("%f", &s);
+
+        return s;
+
+    }
+
+}
+
+char getGradeLetter(float t)
+
+{
+    char grade_letter;
+
+    if (t >= 90.00)
+
+    {
+        grade_letter = 'A';
+    }
+
+    else if (t >= 80.00)
+    {
+        grade_letter = 'B';
+    }
+
+    else if (t >= 70.00)
+    {
+        grade_letter = 'C';
+    }
+
+    else if (t >= 60.00)
+    {
+        grade_letter = 'D';
+    }
+
+    else if (t <= 60)
+
+    {
+        grade_letter = 'F';
+    }
+    return grade_letter;
+}
+
+void print_line(char var, int num)
+
+{
+    int i = 0;
+
+    for (i = 0; i < num; i++)
+    {
+        printf("%c", var);
+    }
+
+}
+

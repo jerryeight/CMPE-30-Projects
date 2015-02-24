@@ -1,0 +1,94 @@
+/*
+ *     SocialLedge.com - Copyright (C) 2013
+ *
+ *     This file is part of free software framework for embedded processors.
+ *     You can use it and/or distribute it as long as this copyright header
+ *     remains unmodified.  The code is free for personal use and requires
+ *     permission to use in a commercial product.
+ *
+ *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+ *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ *     You can reach the author of this software at :
+ *          p r e e t . w i k i @ g m a i l . c o m
+ */
+
+/**
+ * @file
+ * @brief This is the application entry point.
+ */
+
+#include <stdio.h>
+#include "io.hpp"
+#include <string.h>
+
+// Student Info Struct
+
+typedef struct
+{
+        char fname[5];
+        char lname[5];
+        int s_id;
+
+} student;
+
+// Student func
+
+void getStudentInfo(student *students);
+
+void printStudentInfo(student *students);
+
+int main(void)
+{
+
+    student students[2];
+
+    for (int i = 0; i < 2; i++)
+
+    {
+
+        getStudentInfo(&students[i]);
+
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+
+        printStudentInfo(&students[i]);
+
+    }
+
+}
+
+// Students func
+
+void printStudentInfo(student *students)
+
+{
+
+    printf("%s , %s\n", students->fname, students->lname);
+    printf("%i\n", students->s_id);
+
+}
+
+void getStudentInfo(student *students)
+
+{
+
+    printf("Enter your first name");
+
+    scanf("%s", &students->fname[0]);
+
+    printf("Enter your last name");
+
+    scanf("%s", &students->lname[0]);
+
+    printf("Enter your student id");
+
+    scanf("%i", &students->s_id);
+
+}
+
