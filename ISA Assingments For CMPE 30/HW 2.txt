@@ -1,0 +1,21 @@
+Please write a program that asks the user to enter a set of doubles into an array. Please allow the user decide how many doubles they want to enter into the array.
+
+Please add the all of the values in the array and store it into a variable named Sum.
+
+ Please multiply all of the numbers together and store it into a variable named Product.
+
+Please divide the numbers in the array by themselves. The initial quotient of   index[0] divided by index[1] then divided by index[2].  Then divide the new quotient by the next index value until you reach the last number in the array.
+
+Pseudocode of part 4
+
+(index[0] / index[1]) /index[2] .... All the way till  quotient divided by index[i]
+
+Then store the final quotient into a variable called Quotient.
+
+Please print out
+
+"The Sum of the array is  "
+
+"The Product of the array is  "
+
+"The Quotient of the array is  "
